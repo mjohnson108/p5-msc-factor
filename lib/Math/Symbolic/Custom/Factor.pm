@@ -15,11 +15,11 @@ Math::Symbolic::Custom::Factor - Re-arrange a Math::Symbolic expression into a p
 
 =head1 VERSION
 
-Version 0.11
+Version 0.12
 
 =cut
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 use Math::Symbolic qw(:all);
 use Math::Symbolic::Custom::Base;
@@ -539,9 +539,11 @@ sub factorize {
             # test for polynomial
             # FIXME: looping around test_polynomial() like this is slow
             my ($var, $coeffs, $disc, $roots) = $nt->test_polynomial();
-            my $degree = scalar(@{$coeffs})-1;
 
             last POLY_FACTOR unless defined $var;
+            last POLY_FACTOR unless defined $coeffs;
+
+            my $degree = scalar(@{$coeffs})-1;
             last POLY_FACTOR if $degree <= 1;
 
             # check if all the coefficients are constant integers
