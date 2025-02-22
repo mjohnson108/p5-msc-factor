@@ -335,7 +335,7 @@ sub factorize {
                 my $sqrt_y = int_rt(abs($acc), 2);               # y (accumulator) must be a square
                 my $sqrt_x = int_rt($mult, 2);                   # x constant multiplier must be a square
                 
-                if ( defined($sqrt_x) && defined($sqrt_y) ) {
+                if ( defined($sqrt_x) && ($sqrt_x != 1) && defined($sqrt_y) ) {
                     
 					my ($vv, $pow) = split(/:/, $t);
 					my $v = $n_funcs{$vv}->{name};
